@@ -39,31 +39,41 @@ namespace MailClient {
 
         public MainWindow() {
             InitializeComponent();
-            LookForPictureTimer= new DispatcherTimer();
+            LookForPictureTimer = new DispatcherTimer();
             LookForPictureTimer.Interval = TimeSpan.FromSeconds(1);
             LookForPictureTimer.Tick += LockForPicture;
             LookForPictureTimer.Start();
+            Console.Text += "\nStarted";
         }
 
         private void LockForPicture(object? sender, EventArgs args) {
+            UpdateConsole();
+
             if (!Directory.Exists(path)) return;
 
             string[] files = Directory.GetFiles(path);
 
-            if(files.Length == 0) return;
-            foreach(string filePath in files) {
+            if (files.Length == 0) return;
+            foreach (string filePath in files) {
 
-                FileInfo fileInfo= new FileInfo(filePath);
+                FileInfo fileInfo = new FileInfo(filePath);
                 if (fileInfo.Extension != ".png") return;
 
-                if(!filepaths.Contains(filePath)) {
-                    currentPicturePath= filePath;
+                if (!filepaths.Contains(filePath)) {
+                    currentPicturePath = filePath;
                     filepaths.Add(filePath);
                     UpdateImage();
                     UpdateFileName(fileInfo.Name);
                 }
             }
-                
+
+        }
+
+        private void UpdateConsole() {
+            string[] lines = Console.Text.Split("\n");
+            if (lines.Length > 13) { 
+                Console.Text = ""; 
+            }
         }
 
         private void UpdateFileName(string name) {
@@ -96,8 +106,8 @@ namespace MailClient {
 
         private void SendMail(string text) {
             try {
-                using (MailMessage mail = new($"{text}", $"{text}", "EmailTest", "TestImageSend"))
-                using(Attachment data = new(currentPicturePath))
+                using (MailMessage mail = new($"{text}", $"{text}", "HTL-Leonding ", "TestImageSend"))
+                using (Attachment data = new(currentPicturePath))
                 using (SmtpClient smtp = new("smtp.gmail.com", 587)) {
                     smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new NetworkCredential("naoteamhtlleonding@gmail.com", "bsmvxwdldadbhjci");
@@ -113,7 +123,7 @@ namespace MailClient {
                 Console.Text += $"\n{ex.Message}";
                 EmailLock = false;
             }
-            
+
         }
     }
 }

@@ -13,5 +13,6 @@
         <TextBlock FontSize="13"  Text="Starting..." Foreground="#4AF626" FontFamily="consolas" x:Name="Console" Width="316" Height="216" Background="#000" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBlock Foreground="Green" Padding="0,7,0,0" TextAlignment="Center" FontWeight="SemiBold" Text="1.png" FontFamily="consolas" x:Name="fileName" Background="#d3d3d3" Width="324" Height="30" Canvas.Left="468" Canvas.Top="242" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox x:Name="EmailBox" KeyUp="Email_TextBox_KeyPress" BorderBrush="#333333" Background="#262626" Height="30" Width="316" Canvas.Top="214" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Foreground="#8c8c8c" Text="Enter Email Here..."/>
+        <Image Source="Assets/MoritzLogo.png" Height="142" Width="617" Canvas.Top="276" Canvas.Left="-86"/>
     </Canvas>
 </Window>

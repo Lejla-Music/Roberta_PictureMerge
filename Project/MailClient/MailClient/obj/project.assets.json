@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\flyti\\Downloads\\Robotik-TagDerOffenenTuer\\programms\\Projekt 7\\Project\\MailClient\\MailClient\\MailClient.csproj",
+      "projectUniqueName": "C:\\Users\\flyti\\Downloads\\Roberta_PictureMerge\\Project\\MailClient\\MailClient\\MailClient.csproj",
       "projectName": "MailClient",
-      "projectPath": "C:\\Users\\flyti\\Downloads\\Robotik-TagDerOffenenTuer\\programms\\Projekt 7\\Project\\MailClient\\MailClient\\MailClient.csproj",
+      "projectPath": "C:\\Users\\flyti\\Downloads\\Roberta_PictureMerge\\Project\\MailClient\\MailClient\\MailClient.csproj",
       "packagesPath": "C:\\Users\\flyti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\flyti\\Downloads\\Robotik-TagDerOffenenTuer\\programms\\Projekt 7\\Project\\MailClient\\MailClient\\obj\\",
+      "outputPath": "C:\\Users\\flyti\\Downloads\\Roberta_PictureMerge\\Project\\MailClient\\MailClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
