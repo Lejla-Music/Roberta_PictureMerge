@@ -106,11 +106,11 @@ namespace MailClient {
 
         private void SendMail(string text) {
             try {
-                using (MailMessage mail = new($"{text}", $"{text}", "HTL-Leonding ", "TestImageSend"))
+                using (MailMessage mail = new($"{text}", $"{text}", "HTL-Leonding ", ""))
                 using (Attachment data = new(currentPicturePath))
                 using (SmtpClient smtp = new("smtp.gmail.com", 587)) {
                     smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new NetworkCredential("naoteamhtlleonding@gmail.com", "bsmvxwdldadbhjci");
+                    smtp.Credentials = new NetworkCredential("naoteamhtlleonding@gmail.com", "yodartxommusklto");
                     smtp.EnableSsl = true;
                     mail.Attachments.Add(data);
                     smtp.Send(mail);
