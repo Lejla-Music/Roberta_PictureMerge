@@ -93,10 +93,14 @@ namespace MailClient {
         }
 
         private void SendMail(string text) {
-           
+            using (MailMessage mail = new("text", "text", "EmailTest", "asdad"))
+            using (SmtpClient smtp = new("smtp.gmail.com", 587)) {
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("naoteamhtlleonding@gmail.com", "bsmvxwdldadbhjci");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+            }
         }
-
-        //Enter has been pressed
     }
 }
 
