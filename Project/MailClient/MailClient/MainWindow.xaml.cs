@@ -109,6 +109,7 @@ namespace MailClient {
                 EmailLock = false;
             }
             catch (Exception ex) {
+                Console.Text += "\n Email send not succesfull error: ";
                 Console.Text += $"\n{ex.Message}";
                 EmailLock = false;
             }
