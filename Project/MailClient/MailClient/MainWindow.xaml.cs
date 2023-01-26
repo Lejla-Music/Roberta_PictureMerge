@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Mail;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.Pkcs;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -87,19 +89,30 @@ namespace MailClient {
                 return;
             }
             Console.Text += "\n" + "trying to Send...";
-            SendMail(EmailBox.Text);
             EmailLock = true;
+            SendMail(EmailBox.Text);
             EmailBox.Text = String.Empty;
         }
 
         private void SendMail(string text) {
-            using (MailMessage mail = new("text", "text", "EmailTest", "asdad"))
-            using (SmtpClient smtp = new("smtp.gmail.com", 587)) {
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential("naoteamhtlleonding@gmail.com", "bsmvxwdldadbhjci");
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
+            try {
+                using (MailMessage mail = new($"{text}", $"{text}", "EmailTest", "TestImageSend"))
+                using(Attachment data = new(currentPicturePath))
+                using (SmtpClient smtp = new("smtp.gmail.com", 587)) {
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential("naoteamhtlleonding@gmail.com", "bsmvxwdldadbhjci");
+                    smtp.EnableSsl = true;
+                    mail.Attachments.Add(data);
+                    smtp.Send(mail);
+                }
+                Console.Text += "\nEmail succesfully send";
+                EmailLock = false;
             }
+            catch (Exception ex) {
+                Console.Text += $"\n{ex.Message}";
+                EmailLock = false;
+            }
+            
         }
     }
 }
