@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Net.Mail;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.Pkcs;
 using System.Text;
@@ -71,8 +72,8 @@ namespace MailClient {
 
         private void UpdateConsole() {
             string[] lines = Console.Text.Split("\n");
-            if (lines.Length > 14) { 
-                Console.Text = ""; 
+            if (lines.Length > 14) {
+                Console.Text = "";
             }
         }
 
@@ -94,14 +95,20 @@ namespace MailClient {
                 Console.Text += "\n" + "wating for Email To Send";
                 return;
             }
+            if (EmailBox.Text == "cls") {
+                Console.Text = "";
+                EmailBox.Text = "";
+                return;
+            }
             if (!EmailBox.Text.Contains("@") || EmailBox.Text == String.Empty) {
                 Console.Text += "\n" + "no Email recognised";
                 return;
             }
+            string text = EmailBox.Text;
+            EmailBox.Text = String.Empty;
             Console.Text += "\n" + "trying to Send...";
             EmailLock = true;
-            SendMail(EmailBox.Text);
-            EmailBox.Text = String.Empty;
+            SendMail(text);
         }
 
         private void SendMail(string text) {

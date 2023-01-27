@@ -65,6 +65,7 @@ class Handler(FileSystemEventHandler):
 
         elif event.event_type == 'modified':
             print("Picture Received")
+            time.sleep(3)
             createPic()
 
 
