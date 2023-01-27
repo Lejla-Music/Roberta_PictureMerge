@@ -71,7 +71,7 @@ namespace MailClient {
 
         private void UpdateConsole() {
             string[] lines = Console.Text.Split("\n");
-            if (lines.Length > 13) { 
+            if (lines.Length > 14) { 
                 Console.Text = ""; 
             }
         }
