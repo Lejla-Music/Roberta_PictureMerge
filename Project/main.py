@@ -25,10 +25,6 @@ def createPic():
 
     img1.paste(img2, (0, 0), mask=img2)
 
-    I1 = ImageDraw.Draw(img1)
-
-    I1.text((305, 229), f"{count}", fill=(255, 255, 255))
-
     img1.save(f'OutputPictures/{count}.png', 'PNG')
 
 
