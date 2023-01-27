@@ -6,9 +6,10 @@ from watchdog.events import PatternMatchingEventHandler
 from watchdog.events import FileSystemEventHandler
 import os
 
-back = 'Img/under.png'
+back = 'Img/RobertaPicture.jpg'
 front = 'Img/overlay_2023TagDerOffenerTür.png'
 isDone = True
+
 
 def createPic():
     dirPath = 'OutputPictures'
@@ -30,6 +31,7 @@ def createPic():
 
     img1.save(f'OutputPictures/{count}.png', 'PNG')
 
+
 class Watcher:
     DIRECTORY_TO_WATCH = "Img"
 
@@ -38,7 +40,8 @@ class Watcher:
 
     def run(self):
         event_handler = Handler()
-        self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
+        self.observer.schedule(
+            event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
         self.observer.start()
         try:
             while True:
@@ -58,7 +61,7 @@ class Handler(FileSystemEventHandler):
             return None
 
         elif event.event_type == 'created':
-            print ("Received created event - %s." % event.src_path)
+            print("Received created event - %s." % event.src_path)
 
         elif event.event_type == 'modified':
             print("Picture Received")
