@@ -2,7 +2,7 @@ from PIL import Image
 from PIL import ImageDraw
 import os
 
-back = 'Img/under.png'
+back = 'Img/RobertaPicture.jpg'
 front = 'Img/overlay_2023TagDerOffenerTür.png'
 
 dirPath = 'OutputPictures'
@@ -16,11 +16,10 @@ img1 = Image.open(back)
 
 img2 = Image.open(front)
 
-img1.paste(img2, (0,0), mask=img2)
+img1.paste(img2, (0, 0), mask=img2)
 
 I1 = ImageDraw.Draw(img1)
 
 I1.text((305, 229), f"{count}", fill=(255, 255, 255))
 
 img1.save(f'OutputPictures/{count}.png', 'PNG')
-img1.show()
